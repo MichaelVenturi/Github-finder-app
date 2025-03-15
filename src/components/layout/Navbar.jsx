@@ -13,10 +13,10 @@ const Navbar = ({ title = "Github Finder" }) => {
         </div>
         <div className="flex-1 px-2 mx-2">
           <div className="flex justify-end">
-            <NavLink to="/" className={`btn btn-ghost mx-1 btn-sm`}>
+            <NavLink to="/" className="btn btn-ghost mx-1 btn-sm">
               HOME
             </NavLink>
-            <NavLink to="/about" className={`btn btn-ghost mx-1 btn-sm`}>
+            <NavLink to="/about" className="btn btn-ghost mx-1 btn-sm">
               ABOUT
             </NavLink>
           </div>
