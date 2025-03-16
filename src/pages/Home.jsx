@@ -1,10 +1,11 @@
 import UserResults from "../components/users/UserResults";
+import UserSearch from "../components/users/UserSearch";
 
 const Home = () => {
   return (
     <div>
+      <UserSearch />
       <UserResults />
-      {import.meta.env.VITE_FAKE_VAR}
     </div>
   );
 };
