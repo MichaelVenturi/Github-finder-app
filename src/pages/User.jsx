@@ -3,12 +3,14 @@ import { useEffect, useContext } from "react";
 import GithubContext from "../context/github/GithubContext";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../components/layout/Spinner";
+import RepoList from "../components/repos/RepoList";
 
 const User = () => {
-  const { getUser, user, loading } = useContext(GithubContext);
+  const { getUser, user, loading, getUserRepos, repos } = useContext(GithubContext);
   const params = useParams();
   useEffect(() => {
     getUser(params.login);
+    getUserRepos(params.login);
   }, []);
 
   const {
@@ -58,8 +60,8 @@ const User = () => {
             <div className="mb-6">
               <h1 className="text-3xl card-title">
                 {name}
-                <div className="ml-2 mr-1 badge badge-success mt-[6.5px]">{type}</div>
-                {hireable && <div className="mx-1 badge badge-info mt-[6.5px]">Hireable</div>}
+                <div className="ml-2 mr-1 badge badge-outline badge-success mt-[6.5px]">{type}</div>
+                {hireable && <div className="mx-1 badge badge-outline badge-info mt-[6.5px]">Hireable</div>}
               </h1>
               <p>{bio}</p>
               <div className="mt-4 card-actions">
@@ -99,6 +101,7 @@ const User = () => {
             </div>
           </div>
         </div>
+        {/* numerical stats */}
         <div className="w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats stats-vertical md:stats-horizontal">
           <div className="stat">
             <div className="stat-figure text-secondary">
@@ -129,6 +132,8 @@ const User = () => {
             <div className="stat-value pr-5 text-2xl lg:text-4xl">{public_gists}</div>
           </div>
         </div>
+
+        <RepoList repos={repos} />
       </div>
     </>
   );
